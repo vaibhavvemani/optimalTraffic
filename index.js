@@ -66,6 +66,6 @@ routeButton.onclick = () => {
 
 function getOptimalRoute() {
     fetch(`https://optimal-route.vercel.app/getroute?o_place=${coordArray[0]}&d_place=${coordArray[1]}`).then(x => x.json()).then(x => 
-        console.log(x.routes.polyline.encodedPolyline))
+        console.log(x.routes.polyline))
     //window.location.href = `/routemap/index.html?lat=${center.lat}&lng=${center.lon}`;
 }
