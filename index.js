@@ -72,6 +72,7 @@ routeButton.onclick = () => {
         console.log(placeId.slice(-1));
         placeId="getusroute";
         console.log(placeId);
+        
     }
     window.location.href = `/routemap/index.html?lat=${center.lat}&lng=${center.lon}&place=${placeId}`;
 }
