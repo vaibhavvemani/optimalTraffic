@@ -37,7 +37,7 @@ function initAutocomplete() {
 function getOptimalRoute() {
     fetch("https://optimal-route.vercel.app/getroute").then(x => x.json()).then(x => 
         console.log(x.routes))
-    window.location.href = `/routemap/index.html?lat=${center.lat}&lng=${center.lon}`;
+    //window.location.href = `/routemap/index.html?lat=${center.lat}&lng=${center.lon}`;
 }
 
 const coordArray = ['', ''];
