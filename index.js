@@ -45,6 +45,7 @@ function onPlaceChangedS(){
         document.querySelector("#autocomplete").value = "";
     } else {
         coordArray[0] = place.place_id;
+        localStorage.setItem('sourc', coordArray[0]);
         center = {lat: place.geometry.location.lat(), lon: place.geometry.location.lng()}
     }
 }
@@ -56,16 +57,11 @@ function onPlaceChangedD(){
         document.querySelector("#autocomplete").value = "";
     } else {
         coordArray[1] = place.place_id;
+        localStorage.setItem('desti', coordArray[1]);
     }
 }
 
 const routeButton = document.querySelector('#route-button')
 routeButton.onclick = () => {
-    getOptimalRoute();
-}
-
-function getOptimalRoute() {
-    fetch(`https://optimal-route.vercel.app/getroute?o_place=${coordArray[0]}&d_place=${coordArray[1]}`).then(x => x.json()).then(x => 
-        console.log(x.routes[0].polyline.encodedPolyline))
-    //window.location.href = `/routemap/index.html?lat=${center.lat}&lng=${center.lon}`;
+    window.location.href = `/routemap/index.html?lat=${center.lat}&lng=${center.lon}`;
 }

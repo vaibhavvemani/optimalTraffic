@@ -11,6 +11,8 @@ const urlParams = new URLSearchParams(window.location.search);
 const lat = urlParams.get('lat');
 const lng = urlParams.get('lng');
 
+const coordArray = [localStorage.getItem('sourc'), localStorage.getItem('desti')]
+
 function initMap() {
     const centerCoords = new google.maps.LatLng(lat, lng);
     const mapOptions = {
@@ -209,17 +211,20 @@ function initMap() {
         //mapTypeId: google.maps.MapTypeId.ROADMAP,
     }
     const map = new google.maps.Map(document.querySelector("#map"), mapOptions);
-    const decodedPath = google.maps.geometry.encoding.decodePath('}~kvHmzrr@ba\\hnc@jiu@r{Zqx~@hjp@pwEhnc@zhu@zflAbxn@fhjBvqHroaAgcnAp}gAeahAtqGkngAinc@_h|@r{Zad\\y|_D}_y@swg@ysg@}llBpoZqa{@xrw@~eBaaX}{uAero@uqGadY}nr@`dYs_NquNgbjAf{l@|yh@bfc@}nr@z}q@i|i@zgz@r{ZhjFr}gApob@ff}@laIsen@dgYhdPvbIren@'); 
     const decodedLevels = decodeLevels("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
 
-    let setRegion = new google.maps.Polyline({
-        path: decodedPath,
-        levels: decodedLevels,
-        strokeColor: "#fff",
-        strokeOpacity: 1.0,
-        strokeWeight: 5,
-        map: map
-    });
+    fetch(`https://optimal-route.vercel.app/getroute?o_place=${coordArray[0]}&d_place=${coordArray[1]}`).then(x => x.json()).then(x => {
+      const decodedPath = google.maps.geometry.encoding.decodePath(x.routes[0].polyline.encodedPolyline);
+
+      let setRegion = new google.maps.Polyline({
+          path: decodedPath,
+          levels: decodedLevels,
+          strokeColor: "#fff",
+          strokeOpacity: 1.0,
+          strokeWeight: 5,
+          map: map
+      });
+    })
 }
 
 function decodeLevels(encodedLevelsString) {
