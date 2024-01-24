@@ -4,7 +4,7 @@ var script = document.createElement('script');
 script.type = 'text/javascript';
 script.async = ''
 script.defer = ''
-script.src = 'http://maps.google.com/maps/api/js?key=AIzaSyCeEODIjjw3l-PpfsGm0jIOiotmM4aqT7A&libraries=geometry&callback=initMap';    
+script.src = 'https://maps.google.com/maps/api/js?key=AIzaSyCeEODIjjw3l-PpfsGm0jIOiotmM4aqT7A&libraries=geometry&callback=initMap';    
 document.head.appendChild(script);
 
 const urlParams = new URLSearchParams(window.location.search);
