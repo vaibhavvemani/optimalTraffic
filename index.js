@@ -67,7 +67,7 @@ routeButton.onclick = () => {
     if(placeId[-1] == 'a') {
         placeId="getroute";
     } else {
-        placeId="getusaroute";
+        placeId="getusroute";
     }
     window.location.href = `/routemap/index.html?lat=${center.lat}&lng=${center.lon}&place=${placeId}`;
 }
