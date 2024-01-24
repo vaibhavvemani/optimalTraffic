@@ -215,6 +215,8 @@ function initMap() {
     const decodedLevels = decodeLevels("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
 
     fetch(`https://optimal-route.vercel.app/${place}?o_place=${coordArray[0]}&d_place=${coordArray[1]}`).then(x => x.json()).then(x => {
+      console.log(x.routes[0]);
+      console.log(x.routes[1]);
       const decodedPath = google.maps.geometry.encoding.decodePath(x.routes[0].polyline.encodedPolyline);
 
       let setRegion = new google.maps.Polyline({
@@ -225,8 +227,6 @@ function initMap() {
           strokeWeight: 5,
           map: map
       });
-      console.log(x.routes[0]);
-      console.log(x.routes[1]);
     })
 }
 
