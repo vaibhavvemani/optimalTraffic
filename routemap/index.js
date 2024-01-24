@@ -13,6 +13,13 @@ const lng = urlParams.get('lng');
 const place = urlParams.get('place');
 
 const coordArray = [localStorage.getItem('sourc'), localStorage.getItem('desti')]
+const colorCoords = {
+  'TRAFFIC_JAM': 'f00',
+  'SLOW': 'f99',
+  'NORMAL': 'fff'
+}
+
+const mapinfo = document.querySelector('.mapinfo')
 
 function initMap() {
     const centerCoords = new google.maps.LatLng(lat, lng);
@@ -216,17 +223,21 @@ function initMap() {
 
     fetch(`https://optimal-route.vercel.app/${place}?o_place=${coordArray[0]}&d_place=${coordArray[1]}`).then(x => x.json()).then(x => {
       console.log(x.routes[0]);
-      console.log(x.routes[1]);
       const decodedPath = google.maps.geometry.encoding.decodePath(x.routes[0].polyline.encodedPolyline);
+      const speedPath = x.routes[0].travelAdvisory.speedReadingIntervals;
+      console.log(decodedPath)
 
       let setRegion = new google.maps.Polyline({
           path: decodedPath,
           levels: decodedLevels,
-          strokeColor: "#fff",
+          strokeColor: '#fff',
           strokeOpacity: 1.0,
           strokeWeight: 5,
           map: map
       });
+
+      let trafficLayer = new google.maps.TrafficLayer();
+      trafficLayer.setMap(map);
     })
 }
 
