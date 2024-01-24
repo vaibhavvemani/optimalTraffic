@@ -27,6 +27,7 @@ h1 {
     text-align: center;
     color: white;
     font-family: 'DM Serif Text', serif;
+    word-break: keep-all;
 }
 
 input {
