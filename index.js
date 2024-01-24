@@ -34,11 +34,6 @@ function initAutocomplete() {
     desti.addListener('place_changed', onPlaceChangedD);
 }
 
-function getOptimalRoute() {
-    fetch(`https://optimal-route.vercel.app/getroute?o_place=${coordArray[0]}&d_place=${coordArray[1]}`).then(x => x.json()).then(x => 
-        console.log(x.routes))
-    //window.location.href = `/routemap/index.html?lat=${center.lat}&lng=${center.lon}`;
-}
 
 const coordArray = ['', ''];
 let center;
@@ -67,4 +62,10 @@ function onPlaceChangedD(){
 const routeButton = document.querySelector('#route-button')
 routeButton.onclick = () => {
     getOptimalRoute();
+}
+
+function getOptimalRoute() {
+    fetch(`https://optimal-route.vercel.app/getroute?o_place=${coordArray[0]}&d_place=${coordArray[1]}`).then(x => x.json()).then(x => 
+        console.log(x.routes))
+    window.location.href = `/routemap/index.html?lat=${center.lat}&lng=${center.lon}`;
 }
