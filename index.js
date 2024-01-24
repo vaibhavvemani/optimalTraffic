@@ -12,7 +12,7 @@ let desti;
 
 function initAutocomplete() {
     sourc = new google.maps.places.Autocomplete(
-        document.querySelector('#s-autocomplete'),
+        document.querySelector('#autocomplete'),
         {
             types: ['establishment'],
             componentRestrictions: {'country': ['IN']},
@@ -23,7 +23,7 @@ function initAutocomplete() {
     sourc.addListener('place_changed', onPlaceChanged);
 
     desti = new google.maps.places.Autocomplete(
-        document.querySelector('#d-autocomplete'),
+        document.querySelector('#autocomplete'),
         {
             types: ['establishment'],
             componentRestrictions: {'country': ['IN']},
@@ -35,7 +35,8 @@ function initAutocomplete() {
 }
 
 function getOptimalRoute() {
-    fetch("https://optimal-route.vercel.app/getroute").then(x => x.json()).then(x => console.log(x.routes))
+    fetch("https://optimal-route.vercel.app/getroute").then(x => x.json()).then(x => 
+        console.log(x.routes))
 }
 
 function onPlaceChanged(){

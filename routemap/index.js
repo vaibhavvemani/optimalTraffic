@@ -8,11 +8,13 @@ script.src = 'https://maps.google.com/maps/api/js?key=AIzaSyCeEODIjjw3l-PpfsGm0j
 document.head.appendChild(script);
 
 const urlParams = new URLSearchParams(window.location.search);
-const lat = urlParams.get('lat');
-const lng = urlParams.get('lng');
+const lats = urlParams.get('lats');
+const lngs = urlParams.get('lngs');
+const latd = urlParams.get('latd');
+const lngd = urlParams.get('lngd');
 
 function initMap() {
-    const centerCoords = new google.maps.LatLng(lat, lng);
+    const centerCoords = new google.maps.LatLng(lats, lngs);
     const mapOptions = {
         zoom: 15,
         center: centerCoords,
@@ -212,7 +214,7 @@ function initMap() {
     const decodedPath = google.maps.geometry.encoding.decodePath('}~kvHmzrr@ba\\hnc@jiu@r{Zqx~@hjp@pwEhnc@zhu@zflAbxn@fhjBvqHroaAgcnAp}gAeahAtqGkngAinc@_h|@r{Zad\\y|_D}_y@swg@ysg@}llBpoZqa{@xrw@~eBaaX}{uAero@uqGadY}nr@`dYs_NquNgbjAf{l@|yh@bfc@}nr@z}q@i|i@zgz@r{ZhjFr}gApob@ff}@laIsen@dgYhdPvbIren@'); 
     const decodedLevels = decodeLevels("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
 
-    var setRegion = new google.maps.Polyline({
+    let setRegion = new google.maps.Polyline({
         path: decodedPath,
         levels: decodedLevels,
         strokeColor: "#fff",
