@@ -7,11 +7,12 @@ script.defer = ''
 script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCeEODIjjw3l-PpfsGm0jIOiotmM4aqT7A&loading=async&libraries=places&callback=initAutocomplete';    
 document.head.appendChild(script);
 
-let autocomplete;
+let sourc;
+let desti;
 
 function initAutocomplete() {
-    autocomplete = new google.maps.places.Autocomplete(
-        document.querySelector('#autocomplete'),
+    sourc = new google.maps.places.Autocomplete(
+        document.querySelector('#s-autocomplete'),
         {
             types: ['establishment'],
             componentRestrictions: {'country': ['IN']},
@@ -19,7 +20,18 @@ function initAutocomplete() {
         }
     )
     
-    autocomplete.addListener('place_changed', onPlaceChanged);
+    sourc.addListener('place_changed', onPlaceChanged);
+
+    desti = new google.maps.places.Autocomplete(
+        document.querySelector('#d-autocomplete'),
+        {
+            types: ['establishment'],
+            componentRestrictions: {'country': ['IN']},
+            fields: ['place_id', 'geometry', 'name']
+        }
+    )
+    
+    desti.addListener('place_changed', onPlaceChanged);
 }
 
 function getOptimalRoute() {
