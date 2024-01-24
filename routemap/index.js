@@ -225,6 +225,7 @@ function initMap() {
           map: map
       });
       console.log(x.routes[0]);
+      console.log(x.routes[1]);
     })
 }
 
