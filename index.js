@@ -42,6 +42,7 @@ function onPlaceChangedS(){
         document.querySelector("#autocomplete").value = "";
     } else {
         coordArray[0] = place.place_id;
+        console.log(place.place_id);
         localStorage.setItem('sourc', coordArray[0]);
         center = {lat: place.geometry.location.lat(), lon: place.geometry.location.lng()}
     }
@@ -54,6 +55,7 @@ function onPlaceChangedD(){
         document.querySelector("#autocomplete").value = "";
     } else {
         coordArray[1] = place.place_id;
+        console.log(place.place_id);
         localStorage.setItem('desti', coordArray[1]);
     }
 }
