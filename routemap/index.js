@@ -224,7 +224,7 @@ function initMap() {
           strokeWeight: 5,
           map: map
       });
-      console.log(x.json().routes);
+      console.log(x.routes[0]);
     })
 }
 
