@@ -20,7 +20,7 @@ function initAutocomplete() {
         }
     )
     
-    sourc.addListener('place_changed', onPlaceChanged);
+    sourc.addListener('place_changed', onPlaceChangedS);
 
     desti = new google.maps.places.Autocomplete(
         document.querySelector('#d-autocomplete'),
@@ -31,7 +31,7 @@ function initAutocomplete() {
         }
     )
     
-    desti.addListener('place_changed', onPlaceChanged);
+    desti.addListener('place_changed', onPlaceChangedD);
 }
 
 function getOptimalRoute() {
