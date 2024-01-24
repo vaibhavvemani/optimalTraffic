@@ -35,7 +35,7 @@ function initAutocomplete() {
 
 const coordArray = ['', ''];
 let center;
-const placeId = "";
+let placeId = "";
 
 function onPlaceChangedS(){
     let place = sourc.getPlace();
