@@ -15,7 +15,7 @@ function initAutocomplete() {
         document.querySelector('#s-autocomplete'),
         {
             types: ['establishment'],
-            componentRestrictions: {'country': ['IN']},
+            componentRestrictions: {'country': ['US', 'IN']},
             fields: ['place_id', 'geometry', 'name']
         }
     )
