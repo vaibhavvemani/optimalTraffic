@@ -65,7 +65,7 @@ function onPlaceChangedD(){
 
 const routeButton = document.querySelector('#route-button')
 routeButton.onclick = () => {
-    if(placeId.charAt(placeId.length - 2) == 'i') {
+    if(placeId.includes("USA")) {
         placeId="getroute";
         console.log(placeId);
     } else {
