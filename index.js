@@ -1,3 +1,12 @@
+//const api_key = process.env.MAP_API_KEY;
+
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.async = ''
+script.defer = ''
+script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCeEODIjjw3l-PpfsGm0jIOiotmM4aqT7A&loading=async&libraries=places&callback=initAutocomplete';    
+document.head.appendChild(script);
+
 let autocomplete;
 
 function initAutocomplete() {
@@ -14,7 +23,7 @@ function initAutocomplete() {
 }
 
 function getOptimalRoute() {
-    fetch("https://optimal-route.vercel.app/getroute").then(x => console.log(x))
+    fetch("https://optimal-route.vercel.app/getroute").then(x => x.json()).then(x => console.log(x.routes))
 }
 
 function onPlaceChanged(){
@@ -24,6 +33,8 @@ function onPlaceChanged(){
         document.querySelector("#autocomplete").value = "";
     } else {
         document.querySelector(".display").textContent = place.place_id;
+        const center = {lat: place.geometry.location.lat(), lon: place.geometry.location.lng()}
+        window.location.href = `/routemap/index.html?lat=${center.lat}&lng=${center.lon}`;
     }
 }
 

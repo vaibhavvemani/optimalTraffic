@@ -1,0 +1,14 @@
+#map {
+    width: 100vw;
+    height: 100vh;
+}
+
+#map:focus-visible {
+    border: none;
+    outline: none;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
