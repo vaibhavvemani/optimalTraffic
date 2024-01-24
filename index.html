@@ -5,12 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>map stuff probably</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
-    <input id="s-autocomplete" placeholder="Enter a place.." type="text">
-    <input id="d-autocomplete" placeholder="Enter another place.." type="text"> 
-    <h1 class="display">Display:</h1>
-    <button id="route-button">Press me Daddy</button>
+    <h1 class="display">timberpath<span style="font-size: 0.5em;" class="material-symbols-outlined">
+explore
+</span></h1>
+    <div class="input-container">
+        <input id="s-autocomplete" placeholder="Enter a place.." type="text">
+        <input id="d-autocomplete" placeholder="Enter another place.." type="text"> 
+    </div>
+    <button id="route-button">Find the best route</button>
     <script src="index.js"></script>
+    <script src="design.js"></script>
 </body>
 </html>
