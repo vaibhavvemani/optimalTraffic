@@ -12,7 +12,7 @@ let desti;
 
 function initAutocomplete() {
     sourc = new google.maps.places.Autocomplete(
-        document.querySelector('#autocomplete'),
+        document.querySelector('#s-autocomplete'),
         {
             types: ['establishment'],
             componentRestrictions: {'country': ['IN']},
@@ -23,7 +23,7 @@ function initAutocomplete() {
     sourc.addListener('place_changed', onPlaceChanged);
 
     desti = new google.maps.places.Autocomplete(
-        document.querySelector('#autocomplete'),
+        document.querySelector('#d-autocomplete'),
         {
             types: ['establishment'],
             componentRestrictions: {'country': ['IN']},
@@ -37,17 +37,30 @@ function initAutocomplete() {
 function getOptimalRoute() {
     fetch("https://optimal-route.vercel.app/getroute").then(x => x.json()).then(x => 
         console.log(x.routes))
+    window.location.href = `/routemap/index.html?lat=${center.lat}&lng=${center.lon}`;
 }
 
-function onPlaceChanged(){
-    place = autocomplete.getPlace();
+const coordArray = ['', ''];
+let center;
+
+function onPlaceChangedS(){
+    let place = sourc.getPlace();
 
     if(!place.geometry){
         document.querySelector("#autocomplete").value = "";
     } else {
-        document.querySelector(".display").textContent = place.place_id;
-        const center = {lat: place.geometry.location.lat(), lon: place.geometry.location.lng()}
-        window.location.href = `/routemap/index.html?lat=${center.lat}&lng=${center.lon}`;
+        coordArray[0] = place.place_id;
+        center = {lat: place.geometry.location.lat(), lon: place.geometry.location.lng()}
+    }
+}
+
+function onPlaceChangedD(){
+    let place = desti.getPlace();
+
+    if(!place.geometry){
+        document.querySelector("#autocomplete").value = "";
+    } else {
+        coordArray[1] = place.place_id;
     }
 }
 
