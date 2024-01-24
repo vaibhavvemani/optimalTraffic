@@ -15,7 +15,7 @@ function initAutocomplete() {
         document.querySelector('#s-autocomplete'),
         {
             types: ['establishment'],
-            componentRestrictions: {'country': ['IN']},
+            componentRestrictions: {'country': ['US']},
             fields: ['place_id', 'geometry', 'name']
         }
     )
@@ -26,7 +26,7 @@ function initAutocomplete() {
         document.querySelector('#d-autocomplete'),
         {
             types: ['establishment'],
-            componentRestrictions: {'country': ['IN']},
+            componentRestrictions: {'country': ['US']},
             fields: ['place_id', 'geometry', 'name']
         }
     )
