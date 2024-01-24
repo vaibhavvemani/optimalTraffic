@@ -16,7 +16,7 @@ const coordArray = [localStorage.getItem('sourc'), localStorage.getItem('desti')
 function initMap() {
     const centerCoords = new google.maps.LatLng(lat, lng);
     const mapOptions = {
-        zoom: 15,
+        zoom: 5,
         center: centerCoords,
         streetViewControl: false,
         zoomControl: false,
@@ -224,8 +224,6 @@ function initMap() {
           strokeWeight: 5,
           map: map
       });
-      console.log(x.routes[0]);
-      console.log(x.routes[1]);
     })
 }
 
