@@ -19,7 +19,6 @@ function initAutocomplete() {
             fields: ['place_id', 'geometry', 'name']
         }
     )
-    
     sourc.addListener('place_changed', onPlaceChangedS);
 
     desti = new google.maps.places.Autocomplete(
@@ -30,7 +29,6 @@ function initAutocomplete() {
             fields: ['place_id', 'geometry', 'name']
         }
     )
-    
     desti.addListener('place_changed', onPlaceChangedD);
 }
 
@@ -40,7 +38,7 @@ let center;
 
 function onPlaceChangedS(){
     let place = sourc.getPlace();
-
+    console.log(place);
     if(!place.geometry){
         document.querySelector("#autocomplete").value = "";
     } else {
