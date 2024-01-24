@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    font-family: 'DM Mono', monospace;
+}
+
+body {
+    background: linear-gradient(45deg, black 40%, rgb(41, 41, 41), rgb(18, 18, 18));
+    height: 100vh;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: flex;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+}
+
+h1 {
+    width: 100vw;
+    font-size: 4.1em;
+    text-align: center;
+    color: white;
+    font-family: 'DM Serif Text', serif;
+}
+
+input {
+    font-size: large;
+    width: 30%;
+    min-width: max-content;
+    padding-block: 9px;
+    padding-left: 7px;
+
+    border-radius: 6px;
+
+    box-shadow: inset -1px -1px 6px 4px #3f2c43, -1px -1px 1px 1px #321033;
+    border: 2px solid white;
+
+    background-color: #1e1922;
+    color: white;
+    font-family: 'Geologica', sans-serif;
+}
+
+input::placeholder {
+}
