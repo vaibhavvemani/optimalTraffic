@@ -8,10 +8,8 @@ script.src = 'https://maps.google.com/maps/api/js?key=AIzaSyCeEODIjjw3l-PpfsGm0j
 document.head.appendChild(script);
 
 const urlParams = new URLSearchParams(window.location.search);
-const lats = urlParams.get('lats');
-const lngs = urlParams.get('lngs');
-const latd = urlParams.get('latd');
-const lngd = urlParams.get('lngd');
+const lat = urlParams.get('lat');
+const lng = urlParams.get('lng');
 
 function initMap() {
     const centerCoords = new google.maps.LatLng(lats, lngs);
