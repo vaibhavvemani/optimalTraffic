@@ -38,7 +38,7 @@ let center;
 
 function onPlaceChangedS(){
     let place = sourc.getPlace();
-    console.log(place);
+    console.log(document.querySelector("#s-autocomplete").value);
     if(!place.geometry){
         document.querySelector("#autocomplete").value = "";
     } else {
