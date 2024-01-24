@@ -69,6 +69,7 @@ routeButton.onclick = () => {
         placeId="getroute";
         console.log(placeId);
     } else {
+        console.log(placeId.slice(-1));
         placeId="getusroute";
         console.log(placeId);
     }
