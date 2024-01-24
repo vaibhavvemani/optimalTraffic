@@ -12,10 +12,21 @@
 explore
 </span></h1>
     <div class="input-container">
-        <input id="s-autocomplete" placeholder="Enter a place.." type="text">
-        <input id="d-autocomplete" placeholder="Enter another place.." type="text"> 
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+            <p class="parathing">I want to go from </p>
+            <input id="s-autocomplete" placeholder="here" type="text">
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+            <p class="parathing">to</p>
+            <input id="d-autocomplete" placeholder="there" type="text"> 
+        </div>
     </div>
-    <button id="route-button">Find the best route</button>
+    <br><br>
+    <div class="button-container">
+        <button style="display: flex;align-items: center; gap: 8px;" id="route-button"><span class="material-symbols-outlined">
+map
+</span>Find the best route</button>
+    </div>
     <script src="index.js"></script>
     <script src="design.js"></script>
 </body>
