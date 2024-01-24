@@ -65,7 +65,7 @@ function onPlaceChangedD(){
 
 const routeButton = document.querySelector('#route-button')
 routeButton.onclick = () => {
-    if(placeId.charAt(placeId.length - 1) == 'i') {
+    if(placeId.charAt(placeId.length - 2) == 'i') {
         placeId="getroute";
         console.log(placeId);
     } else {
