@@ -10,6 +10,7 @@ document.head.appendChild(script);
 const urlParams = new URLSearchParams(window.location.search);
 const lat = urlParams.get('lat');
 const lng = urlParams.get('lng');
+const place = urlParams.get('place');
 
 const coordArray = [localStorage.getItem('sourc'), localStorage.getItem('desti')]
 
@@ -213,7 +214,7 @@ function initMap() {
     const map = new google.maps.Map(document.querySelector("#map"), mapOptions);
     const decodedLevels = decodeLevels("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
 
-    fetch(`https://optimal-route.vercel.app/getroute?o_place=${coordArray[0]}&d_place=${coordArray[1]}`).then(x => x.json()).then(x => {
+    fetch(`https://optimal-route.vercel.app/${place}?o_place=${coordArray[0]}&d_place=${coordArray[1]}`).then(x => x.json()).then(x => {
       const decodedPath = google.maps.geometry.encoding.decodePath(x.routes[0].polyline.encodedPolyline);
 
       let setRegion = new google.maps.Polyline({

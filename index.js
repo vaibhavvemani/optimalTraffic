@@ -35,6 +35,7 @@ function initAutocomplete() {
 
 const coordArray = ['', ''];
 let center;
+const placeId = "";
 
 function onPlaceChangedS(){
     let place = sourc.getPlace();
@@ -42,7 +43,7 @@ function onPlaceChangedS(){
         document.querySelector("#autocomplete").value = "";
     } else {
         coordArray[0] = place.place_id;
-        console.log(place.place_id);
+        placeId = document.querySelector("#s-autocomplete").value;
         localStorage.setItem('sourc', coordArray[0]);
         center = {lat: place.geometry.location.lat(), lon: place.geometry.location.lng()}
     }
@@ -60,7 +61,13 @@ function onPlaceChangedD(){
     }
 }
 
+
 const routeButton = document.querySelector('#route-button')
 routeButton.onclick = () => {
-    window.location.href = `/routemap/index.html?lat=${center.lat}&lng=${center.lon}`;
+    if(placeId[-1] == 'a') {
+        placeId="getroute";
+    } else {
+        placeId="getusaroute";
+    }
+    window.location.href = `/routemap/index.html?lat=${center.lat}&lng=${center.lon}&place=${placeId}`;
 }
