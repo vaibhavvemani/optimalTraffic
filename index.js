@@ -44,6 +44,7 @@ function onPlaceChangedS(){
     } else {
         coordArray[0] = place.place_id;
         placeId = document.querySelector("#s-autocomplete").value;
+        console.log(placeId);
         localStorage.setItem('sourc', coordArray[0]);
         center = {lat: place.geometry.location.lat(), lon: place.geometry.location.lng()}
     }
@@ -64,7 +65,6 @@ function onPlaceChangedD(){
 
 const routeButton = document.querySelector('#route-button')
 routeButton.onclick = () => {
-    console.log(placeId);
     if(placeId[-1] == 'a') {
         placeId="getroute";
     } else {
