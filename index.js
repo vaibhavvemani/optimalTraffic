@@ -67,8 +67,10 @@ const routeButton = document.querySelector('#route-button')
 routeButton.onclick = () => {
     if(placeId[-1] == 'a') {
         placeId="getroute";
+        console.log(placeId);
     } else {
         placeId="getusroute";
+        console.log(placeId);
     }
     window.location.href = `/routemap/index.html?lat=${center.lat}&lng=${center.lon}&place=${placeId}`;
 }
