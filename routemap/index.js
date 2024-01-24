@@ -12,7 +12,7 @@ const lat = urlParams.get('lat');
 const lng = urlParams.get('lng');
 
 function initMap() {
-    const centerCoords = new google.maps.LatLng(lats, lngs);
+    const centerCoords = new google.maps.LatLng(lat, lng);
     const mapOptions = {
         zoom: 15,
         center: centerCoords,
