@@ -35,7 +35,7 @@ function initAutocomplete() {
 }
 
 function getOptimalRoute() {
-    fetch(`https://optimal-route.vercel.app/getroute?o_placeid=${coordArray[0]}&d_placeid=${coordArray[1]}`).then(x => x.json()).then(x => 
+    fetch(`https://optimal-route.vercel.app/getroute?o_place=${coordArray[0]}&d_place=${coordArray[1]}`).then(x => x.json()).then(x => 
         console.log(x.routes))
     //window.location.href = `/routemap/index.html?lat=${center.lat}&lng=${center.lon}`;
 }
