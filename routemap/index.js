@@ -279,6 +279,8 @@ function initMap() {
             map: map
         })
     })
+    let trafficLayer = new google.maps.TrafficLayer();
+    trafficLayer.setMap(map);
 }
 
 function decodeLevels(encodedLevelsString) {
