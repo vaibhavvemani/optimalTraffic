@@ -15,11 +15,15 @@ const place = urlParams.get('place');
 const coordArray = [localStorage.getItem('sourc'), localStorage.getItem('desti')]
 const colorCoords = {
   'TRAFFIC_JAM': '#f00',
-  'SLOW': '#f99',
-  'NORMAL': '#fff'
+  'SLOW': '#f9b',
+  'NORMAL': '#8f0'
 }
 
 const mapinfo = document.querySelector('.mapinfo')
+
+function renderMetrics(power) {
+  mapinfo.textContent = `DISTANCE: ${power.distanceMeters}m\nDURATION: ${Math.ceil(power.duration/60)}minutes\nFUEL: ${Math.ceil(power.travelAdvisory.fuelConsumptionMicroliters/1000)}ml`
+}
 
 function initMap() {
     const centerCoords = new google.maps.LatLng(lat, lng);
@@ -223,13 +227,12 @@ function initMap() {
 
     fetch(`https://optimal-route.vercel.app/${place}?o_place=${coordArray[0]}&d_place=${coordArray[1]}`).then(x => x.json()).then(x => {
       console.log(x.routes[0]);
-      const decodedPath = google.maps.geometry.encoding.decodePath(x.routes[0].polyline.encodedPolyline);
+      const decodedPath = google.maps.geometry.encoding.decodePath(x.routes[0].polyline.encodedPolyline+1);
       const speedPath = x.routes[0].travelAdvisory.speedReadingIntervals;
-      console.log(decodedPath)
 
       speedPath.forEach(x => {
         let setRegion = new google.maps.Polyline({
-            path: decodedPath.slice(x.startPolylinePointIndex, x.endPolylinePointIndex),
+            path: decodedPath.slice(x.startPolylinePointIndex, x.endPolylinePointIndex+1),
             levels: decodedLevels,
             strokeColor: colorCoords[x.speed],
             strokeOpacity: 1.0,
@@ -238,6 +241,7 @@ function initMap() {
         });
       });
 
+      renderMetrics(routes[0]);
     })
 }
 

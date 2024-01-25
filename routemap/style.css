@@ -48,6 +48,13 @@ body {
     border: 2px solid white;
 }
 
+.mapinfo {
+    position: absolute;
+    z-index: 1000;
+    bottom: 25px;
+    left: 18px;
+}
+
 @media (max-width: 661px) {
     .map-control-button {
         font-size: small;
