@@ -24,7 +24,7 @@ function cycleVtype() {
   initMap()
 }
 let vtype = ["DIESEL", "GASOLINE", "ELECTRIC", "HYBRID"];
-const vtype_btn = document.querySelector("vtype");
+const vtype_btn = document.querySelector("#vtype");
 vtype_btn.addEventListener('click', cycleVtype);
 let showTraffic = true;
 let currentVType = 0;
