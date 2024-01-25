@@ -18,7 +18,16 @@ const colorCoords = {
   'SLOW': '#f07d02',
   'NORMAL': '#4285F4'
 }
+function cycleVtype() {
+  currentVType = (currentVType + 1)%4;
+  vtype_btn.textContent = vtype[currentVType]
+  initMap()
+}
+let vtype = ["DIESEL", "GASOLINE", "ELECTRIC", "HYBRID"];
+const vtype_btn = document.querySelector("vtype");
+vtype_btn.addEventListener('click', cycleVtype);
 let showTraffic = true;
+let currentVType = 0;
 
 function toggleTraffic() {
   showTraffic = !showTraffic;
@@ -233,7 +242,7 @@ function initMap() {
     const map = new google.maps.Map(document.querySelector("#map"), mapOptions);
     const decodedLevels = decodeLevels("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
 
-    fetch(`https://optimal-route.vercel.app/${place}?o_place=${coordArray[0]}&d_place=${coordArray[1]}`).then(x => x.json()).then(x => {
+    fetch(`https://optimal-route.vercel.app/${place}?o_place=${coordArray[0]}&d_place=${coordArray[1]}&vtype=${vtype[currentVType]}`).then(x => x.json()).then(x => {
 
       const decodedPath = google.maps.geometry.encoding.decodePath(x.routes[0].polyline.encodedPolyline+1);
       const speedPath = x.routes[0].travelAdvisory.speedReadingIntervals;
