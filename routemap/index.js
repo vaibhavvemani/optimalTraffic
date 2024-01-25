@@ -240,7 +240,7 @@ function initMap() {
             levels: decodedLevels,
             strokeColor: colorCoords[x.speed],
             strokeOpacity: 1.0,
-            strokeWeight: 8,
+            strokeWeight: 4,
             map: map
         });
       }):
@@ -249,7 +249,7 @@ function initMap() {
             levels: decodedLevels,
             strokeColor: '#fff',
             strokeOpacity: 1.0,
-            strokeWeight: 8,
+            strokeWeight: 4,
             map: map
         })
       
