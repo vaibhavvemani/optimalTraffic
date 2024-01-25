@@ -251,11 +251,9 @@ function initMap() {
 
     fetch(`https://optimal-route.vercel.app/${place}?o_place=${coordArray[0]}&d_place=${coordArray[1]}&vtype=${vtype[currentVType]}`).then(x => x.json()).then(x => {
 
-      console.log(vtype[currentVType])
       const decodedPath = google.maps.geometry.encoding.decodePath(x.routes[0].polyline.encodedPolyline+1);
       const speedPath = x.routes[0].travelAdvisory.speedReadingIntervals;
 
-      console.log(x.routes[0])
       const info = [x.routes[0].distanceMeters, Math.ceil(parseInt(x.routes[0].duration.slice(0,-1))/60), Math.ceil(x.routes[0].travelAdvisory.fuelConsumptionMicroliters/1000)];
       info.push((info[0]/1000)/(info[2]/1000))
       info.push(info[0]/(info[1]*60))
