@@ -20,6 +20,10 @@ const colorCoords = {
 }
 let showTraffic = true;
 
+function toggleTraffic() {
+  showTraffic = !showTraffic;
+  initMap();
+}
 
 function renderMetrics(power) {
   const mapinfo = document.querySelector('.mapinfo')
@@ -227,9 +231,7 @@ function initMap() {
     const decodedLevels = decodeLevels("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
 
     fetch(`https://optimal-route.vercel.app/${place}?o_place=${coordArray[0]}&d_place=${coordArray[1]}`).then(x => x.json()).then(x => {
-      console.log(x.routes[0].distanceMeters);
-      console.log(x.routes[0].duration);
-      console.log(x.routes[0].travelAdvisory.fuelConsumptionMicroliters);
+
       const decodedPath = google.maps.geometry.encoding.decodePath(x.routes[0].polyline.encodedPolyline+1);
       const speedPath = x.routes[0].travelAdvisory.speedReadingIntervals;
 
@@ -254,9 +256,6 @@ function initMap() {
             strokeWeight: 4,
             map: map
         })
-      
-      
-
     })
 }
 
