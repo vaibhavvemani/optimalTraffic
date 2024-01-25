@@ -39,10 +39,12 @@ trafficToggle.addEventListener('click', toggleTraffic);
 
 function renderMetrics(power) {
   const mapinfo = document.querySelector('.mapinfo')
-  const ket = ['DISTANCE', 'DURATION', 'FUEL']
+  mapinfo.innerHTML = ''
+  const ket = ['DISTANCE', 'DURATION', 'FUEL', 'MILEAGE', 'AVG. SPEED']
+  const keto = ['meters', 'minutes', 'mililiters', 'km/L', 'm/s']
   power.forEach((x, i) => {
-    const p = document.querySelector('p')
-    p.textContent = ket[i] + ': ' + x;
+    const p = document.createElement('p')
+    p.textContent = `${ket[i]}: ${x} ${keto[i]}`;
     mapinfo.appendChild(p)
   })
 }
@@ -253,7 +255,10 @@ function initMap() {
       const decodedPath = google.maps.geometry.encoding.decodePath(x.routes[0].polyline.encodedPolyline+1);
       const speedPath = x.routes[0].travelAdvisory.speedReadingIntervals;
 
-      const info = [x.routes[0].distanceMeters, Math.ceil(x.routes[0].duration/60), Math.ceil(x.routes[0].travelAdvisory.fuelConsumptionMicroliters/1000)];
+      console.log(x.routes[0])
+      const info = [x.routes[0].distanceMeters, Math.ceil(parseInt(x.routes[0].duration.slice(0,-1))/60), Math.ceil(x.routes[0].travelAdvisory.fuelConsumptionMicroliters/1000)];
+      info.push((info[0]/1000)/(info[2]/1000))
+      info.push(info[0]/(info[1]*60))
       renderMetrics(info);
         
       showTraffic ?
@@ -272,7 +277,7 @@ function initMap() {
             levels: decodedLevels,
             strokeColor: '#fff',
             strokeOpacity: 1.0,
-            strokeWeight: 4,
+            strokeWeight: 6,
             map: map
         })
     })

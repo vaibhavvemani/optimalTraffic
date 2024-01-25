@@ -57,6 +57,19 @@ body {
     box-shadow:  8px 8px 15px #1c1c1c,
                 -8px -8px 15px #262626;
     color: white;
+
+    border: 2px dashed white;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    font-size: small;
+    padding: 24px;
+}
+
+.mapinfo > p {
+    margin: 0;
 }
 
 @media (max-width: 661px) {

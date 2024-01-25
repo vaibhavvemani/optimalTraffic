@@ -13,12 +13,19 @@ body {
 
 .input-container {
     display: flex;
-    flex-direction: flex;
+    flex-direction: row;
     gap: 32px;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    width: 100vw;
-    flex-wrap: wrap;
+    width: 100%;
+}
+
+.input-div{
+    display: flex; 
+    flex-direction: column;
+    gap: 4px;
+    flex: 0 0 50%;
 }
 
 h1 {
