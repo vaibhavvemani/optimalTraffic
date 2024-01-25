@@ -39,7 +39,12 @@ trafficToggle.addEventListener('click', toggleTraffic);
 
 function renderMetrics(power) {
   const mapinfo = document.querySelector('.mapinfo')
-  mapinfo.textContent = `DISTANCE: ${power.distanceMeters}m\nDURATION: ${Math.ceil(power.duration/60)}minutes\nFUEL: ${Math.ceil(power.travelAdvisory.fuelConsumptionMicroliters/1000)}ml`
+  const ket = ['DISTANCE', 'DURATION', 'FUEL']
+  power.forEach((x, i) => {
+    const p = document.querySelector('p')
+    p.textContent = ket[i] + ': ' + x;
+    mapinfo.appendChild(p)
+  })
 }
 
 function initMap() {
@@ -244,10 +249,12 @@ function initMap() {
 
     fetch(`https://optimal-route.vercel.app/${place}?o_place=${coordArray[0]}&d_place=${coordArray[1]}&vtype=${vtype[currentVType]}`).then(x => x.json()).then(x => {
 
+      console.log(vtype[currentVType])
       const decodedPath = google.maps.geometry.encoding.decodePath(x.routes[0].polyline.encodedPolyline+1);
       const speedPath = x.routes[0].travelAdvisory.speedReadingIntervals;
 
-      renderMetrics(x.routes[0]);
+      const info = [x.routes[0].distanceMeters, Math.ceil(x.routes[0].duration/60), Math.ceil(power.travelAdvisory.fuelConsumptionMicroliters/1000)];
+      renderMetrics(info);
         
       showTraffic ?
       speedPath.forEach(x => {
