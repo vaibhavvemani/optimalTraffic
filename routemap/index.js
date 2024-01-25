@@ -253,7 +253,7 @@ function initMap() {
       const decodedPath = google.maps.geometry.encoding.decodePath(x.routes[0].polyline.encodedPolyline+1);
       const speedPath = x.routes[0].travelAdvisory.speedReadingIntervals;
 
-      const info = [x.routes[0].distanceMeters, Math.ceil(x.routes[0].duration/60), Math.ceil(power.travelAdvisory.fuelConsumptionMicroliters/1000)];
+      const info = [x.routes[0].distanceMeters, Math.ceil(x.routes[0].duration/60), Math.ceil(x.routes[0].travelAdvisory.fuelConsumptionMicroliters/1000)];
       renderMetrics(info);
         
       showTraffic ?
