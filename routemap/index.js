@@ -239,7 +239,7 @@ function initMap() {
       const speedPath = x.routes[0].travelAdvisory.speedReadingIntervals;
 
       renderMetrics(x.routes[0]);
-
+        
       showTraffic ?
       speedPath.forEach(x => {
         let setRegion = new google.maps.Polyline({
