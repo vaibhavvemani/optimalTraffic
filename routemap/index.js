@@ -41,7 +41,7 @@ function renderMetrics(power) {
   const mapinfo = document.querySelector('.mapinfo')
   mapinfo.innerHTML = ''
   const ket = ['DISTANCE', 'DURATION', 'FUEL', 'MILEAGE', 'AVG. SPEED']
-  const keto = ['meters', 'minutes', 'mililiters', 'km/L', 'm/s']
+  const keto = ['kms', 'minutes', 'mililiters', 'km/L', 'm/s']
   power.forEach((x, i) => {
     const p = document.createElement('p')
     p.textContent = `${ket[i]}: ${x} ${keto[i]}`;
@@ -254,9 +254,9 @@ function initMap() {
       const decodedPath = google.maps.geometry.encoding.decodePath(x.routes[0].polyline.encodedPolyline+1);
       const speedPath = x.routes[0].travelAdvisory.speedReadingIntervals;
 
-      const info = [x.routes[0].distanceMeters, Math.ceil(parseInt(x.routes[0].duration.slice(0,-1))/60), Math.ceil(x.routes[0].travelAdvisory.fuelConsumptionMicroliters/1000)];
-      info.push((info[0]/1000)/(info[2]/1000))
-      info.push(info[0]/(info[1]*60))
+      const info = [x.routes[0].distanceMeters/1000, Math.ceil(parseInt(x.routes[0].duration.slice(0,-1))/60), Math.ceil(x.routes[0].travelAdvisory.fuelConsumptionMicroliters/1000)];
+      info.push((info[0])/(info[2]/1000))
+      info.push(info[0]*1000/(info[1]*60))
       renderMetrics(info);
         
       showTraffic ?
@@ -279,8 +279,11 @@ function initMap() {
             map: map
         })
     })
+    if(showTraffic) {
     let trafficLayer = new google.maps.TrafficLayer();
     trafficLayer.setMap(map);
+
+    }
 }
 
 function decodeLevels(encodedLevelsString) {

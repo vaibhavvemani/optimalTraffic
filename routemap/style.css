@@ -72,6 +72,40 @@ body {
     margin: 0;
 }
 
+.poi {
+
+    position: absolute;
+    z-index: 1000;
+    inset-block: 50%;
+    left: 18px;
+    background: linear-gradient(145deg, #23232393, #1e1e1e);
+    box-shadow:  8px 8px 15px #1c1c1c,
+                -8px -8px 15px #262626;
+    color: white;
+
+    border: 1px dashed grey;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    font-size: small;
+    padding: 20px;
+    height: fit-content;
+    width: 20rem;
+}
+
+.poi p {
+    font-size: 1.1em;
+    margin: 0;
+}
+
+.poi > h3 {
+    margin: 0;
+    margin-bottom: 20px;
+    width: 70%;
+}
+
 @media (max-width: 661px) {
     .map-control-button {
         font-size: small;
