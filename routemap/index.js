@@ -25,9 +25,8 @@ function toggleTraffic() {
   initMap();
 }
 
-document.querySelector('#traffic-toggle').onclick = () => {
-  toggleTraffic();
-}
+const trafficToggle = document.querySelector('#traffic-toggle')
+trafficToggle.addEventListener('click', toggleTraffic);
 
 function renderMetrics(power) {
   const mapinfo = document.querySelector('.mapinfo')
