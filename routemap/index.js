@@ -20,9 +20,9 @@ const colorCoords = {
 }
 let showTraffic = true;
 
-const mapinfo = document.querySelector('.mapinfo')
 
 function renderMetrics(power) {
+  const mapinfo = document.querySelector('.mapinfo')
   mapinfo.textContent = `DISTANCE: ${power.distanceMeters}m\nDURATION: ${Math.ceil(power.duration/60)}minutes\nFUEL: ${Math.ceil(power.travelAdvisory.fuelConsumptionMicroliters/1000)}ml`
 }
 
