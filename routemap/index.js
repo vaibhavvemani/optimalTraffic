@@ -14,7 +14,7 @@ const place = urlParams.get('place');
 
 const coordArray = [localStorage.getItem('sourc'), localStorage.getItem('desti')]
 const colorCoords = {
-  'TRAFFIC_JAM': '#9e1313',
+  'TRAFFIC_JAM': '#EA4335',
   'SLOW': '#f07d02',
   'NORMAL': '#4285F4'
 }
@@ -231,6 +231,8 @@ function initMap() {
       const decodedPath = google.maps.geometry.encoding.decodePath(x.routes[0].polyline.encodedPolyline+1);
       const speedPath = x.routes[0].travelAdvisory.speedReadingIntervals;
 
+      renderMetrics(x.routes[0]);
+
       showTraffic ?
       speedPath.forEach(x => {
         let setRegion = new google.maps.Polyline({
@@ -238,7 +240,7 @@ function initMap() {
             levels: decodedLevels,
             strokeColor: colorCoords[x.speed],
             strokeOpacity: 1.0,
-            strokeWeight: 15,
+            strokeWeight: 8,
             map: map
         });
       }):
@@ -247,13 +249,12 @@ function initMap() {
             levels: decodedLevels,
             strokeColor: '#fff',
             strokeOpacity: 1.0,
-            strokeWeight: 15,
+            strokeWeight: 8,
             map: map
         })
       
       
 
-      renderMetrics(x.routes[0]);
     })
 }
 
